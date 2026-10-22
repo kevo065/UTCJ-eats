@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>UTCJ Eats</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <img class="logo" id="logo" alt="Logo UTCJ" src="logo.png">
+    <h1>UTCJ <span>Eats</span></h1>
+  </div>
+  <p>Mira quién vende comida hoy en la UTCJ y dónde encontrarlo.</p>
+</header>
+<main>
+  <section id="puestos" class="on">
+    <div class="chips" id="chips" role="group" aria-label="Filtrar puestos"></div>
+    <div id="lista"></div>
+  </section>
+  <section id="mapa">
+    <div class="mapbox">
+      <svg viewBox="0 0 320 230" role="img" aria-label="Mapa esquemático del campus" id="svg"></svg>
+    </div>
+    <div id="info" class="stand"><span class="meta">Toca un punto del mapa para ver el puesto.</span></div>
+    <p class="meta">Mapa ilustrativo. Cambia las zonas por las áreas reales del campus.</p>
+  </section>
+  <section id="panel">
+    <div class="stand">
+      <h2 style="margin:0 0 4px">Mi puesto</h2>
+      <p class="meta">Avisa a tus compañeros cuándo estás vendiendo y en qué zona.</p>
+      <label for="pn">Nombre del puesto</label>
+      <input type="text" id="pn" placeholder="Ej. Tacos de la Prepa">
+      <label for="pf">Qué vendes</label>
+      <input type="text" id="pf" placeholder="Ej. Tacos, burritos, aguas frescas">
+      <label for="pz">Zona del campus</label>
+      <select id="pz"></select>
+      <label for="pc">Categoría</label>
+      <select id="pc"><option>Comida</option><option>Bebidas</option><option>Postres</option></select>
+      <div class="sw"><input type="checkbox" id="po" checked> <label for="po" style="margin:0">Estoy vendiendo ahora</label></div>
+      <button class="b" id="guardar">Guardar cambios</button>
+    </div>
+  </section>
+  <section id="ajustes">
+    <div class="stand">
+      <h2 style="margin:0 0 8px">Ajustes</h2>
+      <label for="th">Tema</label>
+      <select id="th"><option value="auto">Automático</option><option value="light">Claro</option><option value="dark">Oscuro</option></select>
+      <p class="meta" style="margin-top:16px">UTCJ Eats es un proyecto estudiantil, no oficial de la universidad.</p>
+    </div>
+  </section>
+</main>
+<nav id="nav" aria-label="Secciones">
+  <button data-t="puestos" aria-current="page"><span>🍴</span>Puestos</button>
+  <button data-t="mapa"><span>📍</span>Mapa</button>
+  <button data-t="panel"><span>🧑‍🍳</span>Mi puesto</button>
+  <button data-t="ajustes"><span>⚙️</span>Ajustes</button>
+</nav>
+<div id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
