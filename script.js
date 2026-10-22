@@ -15,8 +15,7 @@ I:{n:"Edificio I",x:12,y:156,w:68,h:62},
 J:{n:"Edificio J",x:88,y:156,w:68,h:62},
 K:{n:"Edificio K",x:164,y:156,w:68,h:62},
 ent:{n:"Entrada",x:240,y:156,w:68,h:62},
-caf:{n:"Cafetería",x:12,y:230,w:140,h:55},
-can:{n:"Canchas",x:160,y:230,w:148,h:55}};
+caf:{n:"Cafetería",x:12,y:230,w:140,h:55}};
 var CATS=["Comida","Bebidas","Postres","Artículos"];
 // ============================
 
