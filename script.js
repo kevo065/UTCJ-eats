@@ -2,8 +2,21 @@
 // Tu WhatsApp: código de país 52 + lada + número, sin + ni espacios
 var WHATSAPP="526562730967";
 // Zonas del campus (nombre, posición x/y y tamaño w/h)
-var Z={A:{n:"Edificio A",x:20,y:20,w:90,h:55},B:{n:"Edificio B",x:120,y:20,w:90,h:55},C:{n:"Edificio C",x:220,y:20,w:80,h:55},
-caf:{n:"Cafetería",x:20,y:100,w:110,h:55},can:{n:"Canchas",x:150,y:100,w:150,h:55},ent:{n:"Entrada",x:90,y:175,w:140,h:42}};
+var Z={
+A:{n:"Edificio A",x:12,y:12,w:68,h:62},
+B:{n:"Edificio B",x:88,y:12,w:68,h:62},
+C:{n:"Edificio C",x:164,y:12,w:68,h:62},
+D:{n:"Edificio D",x:240,y:12,w:68,h:62},
+E:{n:"Edificio E",x:12,y:84,w:68,h:62},
+F:{n:"Edificio F",x:88,y:84,w:68,h:62},
+G:{n:"Edificio G",x:164,y:84,w:68,h:62},
+H:{n:"Edificio H",x:240,y:84,w:68,h:62},
+I:{n:"Edificio I",x:12,y:156,w:68,h:62},
+J:{n:"Edificio J",x:88,y:156,w:68,h:62},
+K:{n:"Edificio K",x:164,y:156,w:68,h:62},
+ent:{n:"Entrada",x:240,y:156,w:68,h:62},
+caf:{n:"Cafetería",x:12,y:230,w:140,h:55},
+can:{n:"Canchas",x:160,y:230,w:148,h:55}};
 var CATS=["Comida","Bebidas","Postres","Artículos"];
 // ============================
 
