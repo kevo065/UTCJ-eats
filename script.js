@@ -63,3 +63,10 @@ try{var t=localStorage.getItem("utcj-theme");if(t){$("th").value=t;$("th").oncha
 
 chips();lista();cargar();
 setInterval(cargar,60000); // revisa cambios cada 60 segundos
+
+$("th").onchange=function(){var v=this.value,r=document.documentElement;if(v==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",v);
+try{localStorage.setItem("utcj-theme",v)}catch(e){}};
+try{var t=localStorage.getItem("utcj-theme");if(t){$("th").value=t;$("th").onchange.call($("th"))}}catch(e){}
+
+chips();lista();cargar();
+setInterval(cargar,60000); // revisa cambios cada 60 segundos
