@@ -1,6 +1,6 @@
 // ====== CONFIGURA ESTO ======
 // Tu WhatsApp: código de país 52 + lada + número, sin + ni espacios
-var WHATSAPP="6562730967";
+var WHATSAPP="526562730967";
 // Zonas del campus (nombre, posición x/y y tamaño w/h)
 var Z={A:{n:"Edificio A",x:20,y:20,w:90,h:55},B:{n:"Edificio B",x:120,y:20,w:90,h:55},C:{n:"Edificio C",x:220,y:20,w:80,h:55},
 caf:{n:"Cafetería",x:20,y:100,w:110,h:55},can:{n:"Canchas",x:150,y:100,w:150,h:55},ent:{n:"Entrada",x:90,y:175,w:140,h:42}};
