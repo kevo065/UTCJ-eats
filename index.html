@@ -30,8 +30,8 @@
   </section>
   <section id="panel">
     <div class="stand">
-      <h2 style="margin:0 0 4px">Mi puesto</h2>
-      <p class="meta">Avisa a tus compañeros cuándo estás vendiendo y en qué zona.</p>
+      <h2 style="margin:0 0 4px">Quiero vender</h2>
+      <p class="meta">Llena tus datos y los enviamos por WhatsApp para agregar tu puesto a la página.</p>
       <label for="pn">Nombre del puesto</label>
       <input type="text" id="pn" placeholder="Ej. Tacos de la Prepa">
       <label for="pf">Qué vendes</label>
@@ -39,9 +39,10 @@
       <label for="pz">Zona del campus</label>
       <select id="pz"></select>
       <label for="pc">Categoría</label>
-      <select id="pc"><option>Comida</option><option>Bebidas</option><option>Postres</option></select>
-      <div class="sw"><input type="checkbox" id="po" checked> <label for="po" style="margin:0">Estoy vendiendo ahora</label></div>
-      <button class="b" id="guardar">Guardar cambios</button>
+      <select id="pc"></select>
+      <label for="ph">Horario</label>
+      <input type="text" id="ph" placeholder="Ej. Lunes a viernes, 9:00 a 14:00">
+      <button class="b" id="guardar" style="margin-top:16px">Enviar por WhatsApp</button>
     </div>
   </section>
   <section id="ajustes">
@@ -56,7 +57,7 @@
 <nav id="nav" aria-label="Secciones">
   <button data-t="puestos" aria-current="page"><span>🍴</span>Puestos</button>
   <button data-t="mapa"><span>📍</span>Mapa</button>
-  <button data-t="panel"><span>🧑‍🍳</span>Mi puesto</button>
+  <button data-t="panel"><span>🧑‍🍳</span>Quiero vender</button>
   <button data-t="ajustes"><span>⚙️</span>Ajustes</button>
 </nav>
 <div id="toast" role="status"></div>
