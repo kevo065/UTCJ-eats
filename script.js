@@ -1,25 +1,32 @@
 // ====== CONFIGURA ESTO ======
 // Tu WhatsApp: código de país 52 + lada + número, sin + ni espacios
 var WHATSAPP="526562730967";
-// Zonas del campus (nombre, posición x/y y tamaño w/h)
+// Zonas del mapa (según el croquis): n nombre, l etiqueta corta, x/y posición, w/h tamaño
 var Z={
-A:{n:"Edificio A",x:12,y:12,w:68,h:62},
-B:{n:"Edificio B",x:88,y:12,w:68,h:62},
-C:{n:"Edificio C",x:164,y:12,w:68,h:62},
-D:{n:"Edificio D",x:240,y:12,w:68,h:62},
-E:{n:"Edificio E",x:12,y:84,w:68,h:62},
-F:{n:"Edificio F",x:88,y:84,w:68,h:62},
-G:{n:"Edificio G",x:164,y:84,w:68,h:62},
-H:{n:"Edificio H",x:240,y:84,w:68,h:62},
-I:{n:"Edificio I",x:12,y:156,w:68,h:62},
-J:{n:"Edificio J",x:88,y:156,w:68,h:62},
-K:{n:"Edificio K",x:164,y:156,w:68,h:62},
-ent:{n:"Entrada",x:240,y:156,w:68,h:62},
-caf:{n:"Cafetería",x:12,y:230,w:140,h:55}};
+A:{n:"Edificio A",l:"A",x:316,y:234,w:44,h:34},
+B:{n:"Edificio B",l:"B",x:366,y:196,w:44,h:34},
+C:{n:"Edificio C",l:"C",x:316,y:158,w:44,h:34},
+D:{n:"Edificio D",l:"D",x:265,y:189,w:44,h:34},
+E:{n:"Edificio E",l:"E",x:259,y:235,w:44,h:34},
+F:{n:"Edificio F",l:"F",x:175,y:177,w:44,h:34},
+G:{n:"Edificio G",l:"G",x:221,y:231,w:36,h:34},
+H:{n:"Edificio H",l:"H",x:80,y:163,w:44,h:34},
+I:{n:"Edificio I",l:"I",x:78,y:213,w:44,h:34},
+J:{n:"Edificio J",l:"J",x:22,y:183,w:44,h:34},
+K:{n:"Edificio K",l:"K",x:304,y:365,w:44,h:34},
+L:{n:"Edificio L",l:"L",x:249,y:302,w:44,h:34},
+M:{n:"Edificio M",l:"M",x:399,y:241,w:30,h:34},
+N:{n:"Edificio N",l:"N",x:199,y:298,w:44,h:34},
+O:{n:"Edificio O",l:"O",x:92,y:59,w:44,h:34},
+P:{n:"Edificio P",l:"P",x:195,y:357,w:44,h:34},
+Q:{n:"Edificio Q",l:"Q",x:213,y:397,w:44,h:34},
+gim:{n:"Gimnasio",l:"Gimnasio",x:192,y:9,w:60,h:34},
+caf:{n:"Cafetería",x:22,y:448,w:190,h:36},
+ent:{n:"Entrada",x:228,y:448,w:190,h:36}};
 var CATS=["Comida","Bebidas","Postres","Artículos"];
 // ============================
 
-var S=[],filtro="Todos",sel=null,$=function(i){return document.getElementById(i)};
+var S=[],filtro="Todos",selz=null,$=function(i){return document.getElementById(i)};
 
 function cargar(){
 fetch("puestos.json?t="+Date.now(),{cache:"no-store"}).then(function(r){return r.json()}).then(function(d){
@@ -37,49 +44,4 @@ function card(s,btn){return '<div class="row"><h3>'+s.n+'</h3><span class="st '+
 function lista(){var v=vis();$("lista").innerHTML=v.length?v.map(function(s){return '<article class="stand">'+card(s,1)+'</article>'}).join(""):
 '<p class="empty">'+(S.length?'No hay puestos con este filtro. Prueba con «Todos».':'Aún no hay puestos. Si quieres vender, ve a «Quiero vender».')+'</p>'}
 
-function mapa(){var h="";for(var k in Z){var z=Z[k];h+='<rect class="zone" x="'+z.x+'" y="'+z.y+'" width="'+z.w+'" height="'+z.h+'" rx="8"/><text class="zl" x="'+(z.x+8)+'" y="'+(z.y+14)+'">'+z.n+'</text>'}
-var cnt={};S.forEach(function(s){var z=Z[s.z];if(!z)return;var i=(cnt[s.z]=(cnt[s.z]||0)+1)-1,cols=Math.max(1,Math.floor((z.w-8)/24));
-var cx=z.x+16+(i%cols)*24,cy=z.y+z.h-14-Math.floor(i/cols)*22;
-h+='<g class="pin '+(s.o?'o':'')+(sel===s.id?' sel':'')+'" tabindex="0" role="button" aria-label="'+s.n+'" data-p="'+s.id+'"><circle cx="'+cx+'" cy="'+cy+'" r="9"/></g>'});
-$("svg").innerHTML=h;var s=S.filter(function(x){return x.id===sel})[0];
-$("info").innerHTML=s?card(s,0):'<span class="meta">Toca un punto del mapa para ver el puesto. Verde: abierto. Rojo: cerrado.</span>'}
-
-function ir(t){["puestos","mapa","panel","ajustes"].forEach(function(i){$(i).classList.toggle("on",i===t)});
-document.querySelectorAll("nav button").forEach(function(b){if(b.dataset.t===t)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
-if(t==="mapa")mapa();window.scrollTo(0,0)}
-
-function toast(m){var t=$("toast");t.textContent=m;t.classList.add("show");setTimeout(function(){t.classList.remove("show")},1800)}
-
-$("nav").onclick=function(e){var b=e.target.closest("button");if(b)ir(b.dataset.t)};
-$("chips").onclick=function(e){var b=e.target.closest("button");if(b){filtro=b.dataset.c;chips();lista()}};
-$("lista").onclick=function(e){var b=e.target.closest("[data-m]");if(b){sel=+b.dataset.m;ir("mapa")}};
-$("svg").onclick=function(e){var p=e.target.closest("[data-p]");if(p){sel=+p.dataset.p;mapa()}};
-$("svg").onkeydown=function(e){if(e.key==="Enter"){var p=e.target.closest("[data-p]");if(p){sel=+p.dataset.p;mapa()}}};
-
-$("pz").innerHTML=Object.keys(Z).map(function(k){return '<option value="'+k+'">'+Z[k].n+'</option>'}).join("");
-$("pc").innerHTML=CATS.map(function(c){return '<option>'+c+'</option>'}).join("");
-
-// Arma el mensaje y abre WhatsApp con los datos ya escritos
-$("guardar").onclick=function(){var n=$("pn").value.trim();
-if(!n){toast("Escribe el nombre del puesto");$("pn").focus();return}
-var msg="Hola, quiero agregar mi puesto a UTCJ Eats.\n"+
-"Nombre: "+n+"\n"+
-"Qué vendo: "+($("pf").value.trim()||"-")+"\n"+
-"Zona: "+Z[$("pz").value].n+"\n"+
-"Categoría: "+$("pc").value+"\n"+
-"Horario: "+($("ph").value.trim()||"-");
-window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank")};
-
-$("th").onchange=function(){var v=this.value,r=document.documentElement;if(v==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",v);
-try{localStorage.setItem("utcj-theme",v)}catch(e){}};
-try{var t=localStorage.getItem("utcj-theme");if(t){$("th").value=t;$("th").onchange.call($("th"))}}catch(e){}
-
-chips();lista();cargar();
-setInterval(cargar,60000); // revisa cambios cada 60 segundos
-
-$("th").onchange=function(){var v=this.value,r=document.documentElement;if(v==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",v);
-try{localStorage.setItem("utcj-theme",v)}catch(e){}};
-try{var t=localStorage.getItem("utcj-theme");if(t){$("th").value=t;$("th").onchange.call($("th"))}}catch(e){}
-
-chips();lista();cargar();
-setInterval(cargar,60000); // revisa cambios cada 60 segundos
+fu
