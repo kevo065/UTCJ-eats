@@ -42,3 +42,12 @@ nav span{display:block;font-size:1.3rem}
 #toast.show{opacity:1}
 .empty{color:var(--mut);text-align:center;padding:24px 0}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.zn{cursor:pointer}
+.zn rect{fill:var(--bg);stroke:var(--line);stroke-width:1.5}
+.zn.o rect{fill:color-mix(in srgb,var(--ok) 22%,var(--card));stroke:var(--ok)}
+.zn.c rect{fill:color-mix(in srgb,var(--no) 18%,var(--card));stroke:var(--no)}
+.zn.sel rect{stroke:var(--acc);stroke-width:3.5}
+.zn text{fill:var(--ink);font:700 13px "Bricolage Grotesque",system-ui,sans-serif;pointer-events:none}
+.zn .bd{fill:var(--ok);stroke:var(--card);stroke-width:1.5}
+.zn.c .bd{fill:var(--no)}
+.zn .bn{fill:#fff;font-size:9px;font-weight:800}
