@@ -26,8 +26,9 @@ function lista(){var v=vis();$("lista").innerHTML=v.length?v.map(function(s){ret
 '<p class="empty">'+(S.length?'No hay puestos con este filtro. Prueba con «Todos».':'Aún no hay puestos. Si quieres vender, ve a «Quiero vender».')+'</p>'}
 
 function mapa(){var h="";for(var k in Z){var z=Z[k];h+='<rect class="zone" x="'+z.x+'" y="'+z.y+'" width="'+z.w+'" height="'+z.h+'" rx="8"/><text class="zl" x="'+(z.x+8)+'" y="'+(z.y+14)+'">'+z.n+'</text>'}
-var cnt={};S.forEach(function(s){var z=Z[s.z];if(!z)return;var i=cnt[s.z]=(cnt[s.z]||0)+1;
-h+='<g class="pin '+(s.o?'o':'')+(sel===s.id?' sel':'')+'" tabindex="0" role="button" aria-label="'+s.n+'" data-p="'+s.id+'"><circle cx="'+(z.x+16+(i-1)*24)+'" cy="'+(z.y+z.h-16)+'" r="9"/></g>'});
+var cnt={};S.forEach(function(s){var z=Z[s.z];if(!z)return;var i=(cnt[s.z]=(cnt[s.z]||0)+1)-1,cols=Math.max(1,Math.floor((z.w-8)/24));
+var cx=z.x+16+(i%cols)*24,cy=z.y+z.h-14-Math.floor(i/cols)*22;
+h+='<g class="pin '+(s.o?'o':'')+(sel===s.id?' sel':'')+'" tabindex="0" role="button" aria-label="'+s.n+'" data-p="'+s.id+'"><circle cx="'+cx+'" cy="'+cy+'" r="9"/></g>'});
 $("svg").innerHTML=h;var s=S.filter(function(x){return x.id===sel})[0];
 $("info").innerHTML=s?card(s,0):'<span class="meta">Toca un punto del mapa para ver el puesto. Verde: abierto. Rojo: cerrado.</span>'}
 
