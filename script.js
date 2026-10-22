@@ -55,4 +55,11 @@ var msg="Hola, quiero agregar mi puesto a UTCJ Eats.\n"+
 "Zona: "+Z[$("pz").value].n+"\n"+
 "Categoría: "+$("pc").value+"\n"+
 "Horario: "+($("ph").value.trim()||"-");
-window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank"
+window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank")};
+
+$("th").onchange=function(){var v=this.value,r=document.documentElement;if(v==="auto")r.removeAttribute("data-theme");else r.setAttribute("data-theme",v);
+try{localStorage.setItem("utcj-theme",v)}catch(e){}};
+try{var t=localStorage.getItem("utcj-theme");if(t){$("th").value=t;$("th").onchange.call($("th"))}}catch(e){}
+
+chips();lista();cargar();
+setInterval(cargar,60000); // revisa cambios cada 60 segundos
