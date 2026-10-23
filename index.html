@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>UTCJ Eats</title>
+<meta name="theme-color" content="#0b7a4b">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
@@ -23,10 +27,14 @@
   </section>
   <section id="mapa">
     <div class="mapbox">
-    <svg viewBox="0 0 440 492" role="img" aria-label="Mapa esquemático del campus" id="svg"></svg>
+      <svg viewBox="0 0 880 886" role="img" aria-label="Croquis del campus UTCJ" id="svg"></svg>
+      <div class="mc">
+        <button id="zi" aria-label="Acercar">+</button>
+        <button id="zo" aria-label="Alejar">−</button>
+        <button id="zr" aria-label="Ver todo el mapa"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></button>
+      </div>
     </div>
-    <div id="info" class="stand"><span class="meta">Toca un punto del mapa para ver el puesto.</span></div>
-    <p class="meta">Mapa ilustrativo. Cambia las zonas por las áreas reales del campus.</p>
+    <div id="info" class="stand"><span class="meta">Toca un edificio para ver sus puestos. Arrastra para moverte y pellizca para acercar.</span></div>
   </section>
   <section id="panel">
     <div class="stand">

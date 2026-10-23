@@ -25,11 +25,24 @@ section{display:none}section.on{display:block}
 button.b,.b{border:0;background:var(--pri);color:#fff;border-radius:10px;padding:8px 14px;font:600 .95rem inherit;font-family:inherit;cursor:pointer}
 button.g{background:transparent;color:var(--pri);border:1px solid var(--pri)}
 :focus-visible{outline:3px solid var(--acc);outline-offset:2px}
-.mapbox{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px}
-svg{width:100%;height:auto;display:block}
-.zone{fill:var(--bg);stroke:var(--line);stroke-width:1.5}
-.zl{fill:var(--mut);font-size:9px;font-family:inherit}
-.pin{cursor:pointer}.pin circle{fill:var(--no);stroke:#fff;stroke-width:2}.pin.o circle{fill:var(--pri)}.pin.sel circle{stroke:var(--acc);stroke-width:4}
+.mapbox{position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:8px;overflow:hidden}
+.mc{position:absolute;top:14px;right:14px;display:flex;flex-direction:column;gap:8px}
+.mc button{width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:#17261d;font:700 22px/1 inherit;font-family:inherit;box-shadow:0 2px 8px rgba(0,0,0,.3);cursor:pointer;display:grid;place-items:center;padding:0}
+#svg{width:100%;height:auto;display:block;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+/* Zonas sobre el croquis */
+.zn{cursor:pointer}
+.zn rect{fill:transparent;stroke:rgba(11,122,75,.35);stroke-width:2;stroke-dasharray:6 5}
+.zn.o rect{fill:rgba(11,122,75,.38);stroke:#0b7a4b;stroke-width:4;stroke-dasharray:none}
+.zn.c rect{fill:rgba(180,69,47,.35);stroke:#b4452f;stroke-width:4;stroke-dasharray:none}
+.zn.sel rect{stroke:#ffb020;stroke-width:7;stroke-dasharray:none}
+.zn.zs rect{fill:var(--bg);stroke:var(--line);stroke-width:2;stroke-dasharray:none}
+.zn.zs.o rect{fill:rgba(11,122,75,.25);stroke:#0b7a4b;stroke-width:4}
+.zn.zs.c rect{fill:rgba(180,69,47,.22);stroke:#b4452f;stroke-width:4}
+.zn text{pointer-events:none;font-family:inherit}
+.zn .zt{fill:var(--ink);font-size:28px;font-weight:700}
+.zn .bd{fill:#0b7a4b;stroke:#fff;stroke-width:3}
+.zn.c .bd{fill:#b4452f}
+.zn .bn{fill:#fff;font-size:20px;font-weight:800}
 #info{margin-top:12px}
 label{display:block;margin:12px 0 4px;font-weight:600}
 input[type=text],select{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
@@ -42,12 +55,3 @@ nav span{display:block;font-size:1.3rem}
 #toast.show{opacity:1}
 .empty{color:var(--mut);text-align:center;padding:24px 0}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-.zn{cursor:pointer}
-.zn rect{fill:var(--bg);stroke:var(--line);stroke-width:1.5}
-.zn.o rect{fill:color-mix(in srgb,var(--ok) 22%,var(--card));stroke:var(--ok)}
-.zn.c rect{fill:color-mix(in srgb,var(--no) 18%,var(--card));stroke:var(--no)}
-.zn.sel rect{stroke:var(--acc);stroke-width:3.5}
-.zn text{fill:var(--ink);font:700 13px "Bricolage Grotesque",system-ui,sans-serif;pointer-events:none}
-.zn .bd{fill:var(--ok);stroke:var(--card);stroke-width:1.5}
-.zn.c .bd{fill:var(--no)}
-.zn .bn{fill:#fff;font-size:9px;font-weight:800}
